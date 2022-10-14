@@ -13,7 +13,7 @@ module.exports = {
       .select('-__v')
       .then((course) =>
         !course
-          ? res.status(404).json({ message: 'No course with that ID' })
+          ? res.status(404).json({ message: 'No course with that ID ❗⛔' })
           : res.json(course)
       )
       .catch((err) => res.status(500).json(err));
@@ -32,10 +32,10 @@ module.exports = {
     Course.findOneAndDelete({ _id: req.params.courseId })
       .then((course) =>
         !course
-          ? res.status(404).json({ message: 'No course with that ID' })
+          ? res.status(404).json({ message: 'No course with that ID ❗⛔' })
           : Student.deleteMany({ _id: { $in: course.students } })
       )
-      .then(() => res.json({ message: 'Course and students deleted!' }))
+      .then(() => res.json({ message: 'Warning❗⛔ Course and students deleted❗❌' }))
       .catch((err) => res.status(500).json(err));
   },
   // Update a course
@@ -47,7 +47,7 @@ module.exports = {
     )
       .then((course) =>
         !course
-          ? res.status(404).json({ message: 'No course with this id!' })
+          ? res.status(404).json({ message: 'No course with this id❗⛔' })
           : res.json(course)
       )
       .catch((err) => res.status(500).json(err));
